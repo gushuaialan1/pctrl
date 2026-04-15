@@ -12,15 +12,15 @@ jobs:
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
-            binary: target/release/pctrl
+            binary: target/x86_64-unknown-linux-gnu/release/pctrl
             asset_name: pctrl-linux-x64
-          - os: macos-latest
+          - os: macos-13
             target: x86_64-apple-darwin
-            binary: target/release/pctrl
+            binary: target/x86_64-apple-darwin/release/pctrl
             asset_name: pctrl-macos-x64
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-            binary: target/release/pctrl.exe
+            binary: target/x86_64-pc-windows-msvc/release/pctrl.exe
             asset_name: pctrl-windows-x64.exe
     runs-on: ${{ matrix.os }}
     steps:
