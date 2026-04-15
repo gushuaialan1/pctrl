@@ -13,15 +13,15 @@ jobs:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
             binary: target/x86_64-unknown-linux-gnu/release/pctrl
-            asset_name: pctrl-linux-x64
+            archive_name: pctrl-linux-x64.tar.gz
           - os: macos-latest
             target: x86_64-apple-darwin
             binary: target/x86_64-apple-darwin/release/pctrl
-            asset_name: pctrl-macos-x64
+            archive_name: pctrl-macos-x64.tar.gz
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             binary: target/x86_64-pc-windows-msvc/release/pctrl.exe
-            asset_name: pctrl-windows-x64.exe
+            archive_name: pctrl-windows-x64.zip
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -37,17 +37,24 @@ jobs:
       - name: Build release binary
         run: cargo build --release --target ${{ matrix.target }}
 
-      - name: Package binary
+      - name: Package binary with dictionaries
         shell: bash
         run: |
-          mkdir -p dist
-          cp ${{ matrix.binary }} dist/${{ matrix.asset_name }}
+          mkdir -p dist/pctrl
+          cp ${{ matrix.binary }} dist/pctrl/
+          cp -r dictionaries dist/pctrl/
+          cd dist
+          if [[ "${{ matrix.archive_name }}" == *.zip ]]; then
+            powershell -Command "Compress-Archive -Path pctrl\* -DestinationPath ${{ matrix.archive_name }}"
+          else
+            tar -czf ${{ matrix.archive_name }} pctrl
+          fi
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.asset_name }}
-          path: dist/${{ matrix.asset_name }}
+          name: ${{ matrix.archive_name }}
+          path: dist/${{ matrix.archive_name }}
 
   release:
     needs: build

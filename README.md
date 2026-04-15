@@ -89,8 +89,28 @@ Key dependencies:
 
 ### 预编译二进制 / Prebuilt Binaries
 
-从 GitHub Releases 下载适用于 Linux、macOS 或 Windows 的二进制文件。
-Download from GitHub Releases for Linux, macOS, or Windows.
+从 [GitHub Releases](https://github.com/gushuaialan1/pctrl/releases) 下载适用于你平台的压缩包，解压后即可使用。
+Download the archive for your platform from [GitHub Releases](https://github.com/gushuaialan1/pctrl/releases) and extract it:
+
+```bash
+# Linux
+curl -LO https://github.com/gushuaialan1/pctrl/releases/latest/download/pctrl-linux-x64.tar.gz
+tar -xzf pctrl-linux-x64.tar.gz
+./pctrl/pctrl convert "单于夜遁逃"
+
+# macOS
+curl -LO https://github.com/gushuaialan1/pctrl/releases/latest/download/pctrl-macos-x64.tar.gz
+tar -xzf pctrl-macos-x64.tar.gz
+./pctrl/pctrl convert "单于夜遁逃"
+```
+
+解压后的目录包含二进制文件和 `dictionaries/` 词典数据。你也可以通过环境变量指定词典路径：
+You can also point to a custom dictionary directory via environment variable:
+
+```bash
+export PCTRL_DICT_DIR=/path/to/dictionaries
+pctrl convert "单于夜遁逃"
+```
 
 ### 从源码构建 / Build from Source
 

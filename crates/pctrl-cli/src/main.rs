@@ -292,6 +292,9 @@ fn load_dictionary(config: &Config) -> Result<Dictionary> {
         project_dir.join("dictionaries"),
         project_dir.join("../dictionaries"),
     ];
+    if let Ok(env_dict_dir) = std::env::var("PCTRL_DICT_DIR") {
+        candidates.push(PathBuf::from(env_dict_dir));
+    }
     for p in &config.dictionaries.paths {
         candidates.push(p.clone());
     }
