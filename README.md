@@ -63,6 +63,19 @@ enabled = ["cc_cedict_common", "cc_cedict_history", "history_core"]
 2. **cc_cedict_history** (priority 800): 约 4,900 条历史专有名词（人名、地名、官职等）
 3. **history_core** (priority 900): 人工精校的高危误读词（如 仆射 pu2 ye4、单于 chan2 yu2）
 
+## 文档
+
+- 完整使用指南与集成说明请参见 [`docs/usage.md`](docs/usage.md)
+
+## 示例
+
+`examples/` 目录包含可直接运行的集成示例：
+
+- [`examples/batch_convert.sh`](examples/batch_convert.sh) — 批量转换文本目录
+- [`examples/tts_pipeline.py`](examples/tts_pipeline.py) — Python 调用 pctrl 并输出 SSML
+- [`examples/add_custom_entry.py`](examples/add_custom_entry.py) — 向 history_core.json 添加自定义词条
+- [`examples/filter_history_terms.py`](examples/filter_history_terms.py) — 检索内置词典中的拼音模式
+
 ## 数据来源
 
 - 拼音词典基于 [CC-CEDICT](https://www.mdbg.net/chinese/dictionary?page=cc-cedict) （CC BY-SA 4.0）
