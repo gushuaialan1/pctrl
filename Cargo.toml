@@ -1,0 +1,27 @@
+[workspace]
+members = [
+    "crates/pctrl-core",
+    "crates/pctrl-dict",
+    "crates/pctrl-segment",
+    "crates/pctrl-engine",
+    "crates/pctrl-output",
+    "crates/pctrl-config",
+    "crates/pctrl-cli",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["gushuaialan1"]
+license = "MIT"
+repository = "https://github.com/gushuaialan1/pctrl"
+
+[workspace.dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+thiserror = "1.0"
+anyhow = "1.0"
+clap = { version = "4.5", features = ["derive"] }
+phf = { version = "0.11", features = ["macros"] }

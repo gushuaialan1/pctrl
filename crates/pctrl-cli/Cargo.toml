@@ -1,0 +1,21 @@
+[package]
+name = "pctrl-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "pctrl"
+path = "src/main.rs"
+
+[dependencies]
+pctrl-core = { path = "../pctrl-core" }
+pctrl-config = { path = "../pctrl-config" }
+pctrl-dict = { path = "../pctrl-dict" }
+pctrl-engine = { path = "../pctrl-engine" }
+pctrl-output = { path = "../pctrl-output" }
+clap = { workspace = true }
+anyhow = { workspace = true }
+serde_json = { workspace = true }
+dirs = "5.0"
