@@ -19,7 +19,10 @@ fn assert_convert(input: &str, expected: &str) {
 
 #[test]
 fn test_history_terms() {
-    assert_convert("\u{5355}\u{4e8e}\u{591c}\u{9041}\u{9003}", "chan2 yu2 ye4 dun4 tao2");
+    assert_convert(
+        "\u{5355}\u{4e8e}\u{591c}\u{9041}\u{9003}",
+        "chan2 yu2 ye4 dun4 tao2",
+    );
     assert_convert("\u{957f}\u{5b59}\u{65e0}\u{5fcc}", "zhang3 sun1 wu2 ji4");
     assert_convert("\u{5410}\u{8543}", "tu3 bo1");
     assert_convert("\u{9f9f}\u{5179}", "qiu1 ci2");
@@ -38,7 +41,11 @@ fn test_history_terms() {
 #[test]
 fn test_dict_validate() {
     let output = pctrl()
-        .args(["dict", "validate", "../../dictionaries/history/history_core.json"])
+        .args([
+            "dict",
+            "validate",
+            "../../dictionaries/history/history_core.json",
+        ])
         .output()
         .expect("failed to execute");
     let stdout = String::from_utf8_lossy(&output.stdout);

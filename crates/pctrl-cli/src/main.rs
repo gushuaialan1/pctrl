@@ -1,6 +1,7 @@
 use std::fs;
 use std::io::{self, Read};
 use std::path::{Path, PathBuf};
+use std::str::FromStr;
 use std::time::Instant;
 
 use anyhow::{Context, Result};
@@ -121,7 +122,13 @@ fn main() -> Result<()> {
             for (i, token) in result.tokens.iter().enumerate() {
                 println!(
                     "  [{}] surface={} pinyin={:?} source={} strategy={} priority={} confidence={}",
-                    i, token.surface, token.pinyin, token.source, token.strategy, token.priority, token.confidence
+                    i,
+                    token.surface,
+                    token.pinyin,
+                    token.source,
+                    token.strategy,
+                    token.priority,
+                    token.confidence
                 );
             }
         }

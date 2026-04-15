@@ -41,11 +41,7 @@ impl PronunciationResult {
 
     pub fn to_segmented(&self) -> String {
         let surfaces: Vec<_> = self.tokens.iter().map(|t| t.surface.clone()).collect();
-        let pinyins: Vec<_> = self
-            .tokens
-            .iter()
-            .map(|t| t.pinyin.join(" "))
-            .collect();
+        let pinyins: Vec<_> = self.tokens.iter().map(|t| t.pinyin.join(" ")).collect();
         format!("{}\n{}", surfaces.join("/"), pinyins.join(" / "))
     }
 }

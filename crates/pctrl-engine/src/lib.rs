@@ -77,9 +77,9 @@ impl Engine {
 }
 
 fn is_cjk(ch: char) -> bool {
-    (ch >= '\u{4E00}' && ch <= '\u{9FFF}')
-        || (ch >= '\u{3400}' && ch <= '\u{4DBF}')
-        || (ch >= '\u{20000}' && ch <= '\u{2A6DF}')
+    ('\u{4E00}'..='\u{9FFF}').contains(&ch)
+        || ('\u{3400}'..='\u{4DBF}').contains(&ch)
+        || ('\u{20000}'..='\u{2A6DF}').contains(&ch)
 }
 
 // 优先匹配更长的词；长度相同时，priority 数值越高代表优先级越高
@@ -87,12 +87,11 @@ fn pick_best<'a>(dict: &'a Dictionary, matches: &'a [Match]) -> Option<&'a Match
     matches.iter().max_by(|a, b| {
         let len_a = a.word.chars().count();
         let len_b = b.word.chars().count();
-        len_a.cmp(&len_b)
-            .then_with(|| {
-                dict.entry(a.entry_index)
-                    .priority
-                    .cmp(&dict.entry(b.entry_index).priority)
-            })
+        len_a.cmp(&len_b).then_with(|| {
+            dict.entry(a.entry_index)
+                .priority
+                .cmp(&dict.entry(b.entry_index).priority)
+        })
     })
 }
 

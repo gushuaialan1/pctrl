@@ -7,8 +7,10 @@ pub enum OutputFormat {
     Segmented,
 }
 
-impl OutputFormat {
-    pub fn from_str(s: &str) -> anyhow::Result<Self> {
+impl std::str::FromStr for OutputFormat {
+    type Err = anyhow::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {
             "plain" => Ok(Self::Plain),
             "json" => Ok(Self::Json),

@@ -15,7 +15,12 @@ fn test_convert_plain() {
     let stdout = String::from_utf8_lossy(&output.stdout);
     let stderr = String::from_utf8_lossy(&output.stderr);
     assert!(output.status.success(), "stderr: {}", stderr);
-    assert!(stdout.trim().contains("chan2 yu2"), "got stdout: {}, stderr: {}", stdout, stderr);
+    assert!(
+        stdout.trim().contains("chan2 yu2"),
+        "got stdout: {}, stderr: {}",
+        stdout,
+        stderr
+    );
 }
 
 #[test]
@@ -27,7 +32,12 @@ fn test_convert_json() {
     let stdout = String::from_utf8_lossy(&output.stdout);
     let stderr = String::from_utf8_lossy(&output.stderr);
     assert!(output.status.success(), "stderr: {}", stderr);
-    assert!(stdout.contains("zhang3"), "got stdout: {}, stderr: {}", stdout, stderr);
+    assert!(
+        stdout.contains("zhang3"),
+        "got stdout: {}, stderr: {}",
+        stdout,
+        stderr
+    );
     assert!(
         stdout.contains("history_core") || stdout.contains("cc_cedict_common"),
         "got stdout: {}, stderr: {}",

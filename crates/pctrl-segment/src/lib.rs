@@ -35,9 +35,9 @@ pub fn segment(text: &str) -> Vec<String> {
 }
 
 fn is_cjk(ch: char) -> bool {
-    (ch >= '\u{4E00}' && ch <= '\u{9FFF}')
-        || (ch >= '\u{3400}' && ch <= '\u{4DBF}')
-        || (ch >= '\u{20000}' && ch <= '\u{2A6DF}')
+    ('\u{4E00}'..='\u{9FFF}').contains(&ch)
+        || ('\u{3400}'..='\u{4DBF}').contains(&ch)
+        || ('\u{20000}'..='\u{2A6DF}').contains(&ch)
 }
 
 #[cfg(test)]

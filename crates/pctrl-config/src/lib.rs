@@ -13,10 +13,18 @@ pub struct EngineConfig {
     pub unknown_word_policy: String,
 }
 
-fn default_max_match() -> bool { true }
-fn default_preserve_punctuation() -> bool { true }
-fn default_fallback() -> String { "builtin".into() }
-fn default_unknown_word_policy() -> String { "char_by_char".into() }
+fn default_max_match() -> bool {
+    true
+}
+fn default_preserve_punctuation() -> bool {
+    true
+}
+fn default_fallback() -> String {
+    "builtin".into()
+}
+fn default_unknown_word_policy() -> String {
+    "char_by_char".into()
+}
 
 impl Default for EngineConfig {
     fn default() -> Self {
@@ -43,11 +51,21 @@ pub struct PriorityConfig {
     pub builtin: i32,
 }
 
-fn default_user_dict() -> i32 { 1000 }
-fn default_history_dict() -> i32 { 900 }
-fn default_common_misread() -> i32 { 800 }
-fn default_rule_engine() -> i32 { 500 }
-fn default_builtin() -> i32 { 100 }
+fn default_user_dict() -> i32 {
+    1000
+}
+fn default_history_dict() -> i32 {
+    900
+}
+fn default_common_misread() -> i32 {
+    800
+}
+fn default_rule_engine() -> i32 {
+    500
+}
+fn default_builtin() -> i32 {
+    100
+}
 
 impl Default for PriorityConfig {
     fn default() -> Self {
@@ -71,8 +89,12 @@ pub struct OutputConfig {
     pub show_confidence: bool,
 }
 
-fn default_format() -> String { "plain".into() }
-fn default_true() -> bool { true }
+fn default_format() -> String {
+    "plain".into()
+}
+fn default_true() -> bool {
+    true
+}
 
 impl Default for OutputConfig {
     fn default() -> Self {
